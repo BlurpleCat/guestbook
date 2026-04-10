@@ -41,8 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # project notes
-outline.md
-
-# AI agent config
-CLAUDE.md
-AGENTS.md
+instructions.md

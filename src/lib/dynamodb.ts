@@ -12,12 +12,14 @@ const PARTITION_KEY = "GUESTBOOK";
 const MAX_ENTRIES = 100;
 
 const client = new DynamoDBClient({
-  endpoint: process.env.DYNAMODB_ENDPOINT,
+  ...(process.env.DYNAMODB_ENDPOINT && { endpoint: process.env.DYNAMODB_ENDPOINT }),
   region: process.env.AWS_REGION ?? "us-east-1",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? "local",
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? "local",
-  },
+  ...(process.env.AWS_ACCESS_KEY_ID && {
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+    },
+  }),
 });
 
 const docClient = DynamoDBDocumentClient.from(client);
