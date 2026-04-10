@@ -1,0 +1,12 @@
+node_modules
+.next
+.env*
+.git
+.gitignore
+terraform
+docker-compose.yml
+*.md
+.vscode
+.cursor
+Dockerfile
+deploy.sh
